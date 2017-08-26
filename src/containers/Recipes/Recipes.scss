@@ -1,0 +1,16 @@
+.recipes {
+  width: 90%;
+  max-width: 1000px;
+  margin: auto;
+
+  &__all {
+    //display: flex;
+    //flex-direction: row;
+    //flex-wrap: wrap;
+    //justify-content: space-around;
+    margin: auto;
+    column-count: 3;
+    column-gap: 0;
+
+  }
+}

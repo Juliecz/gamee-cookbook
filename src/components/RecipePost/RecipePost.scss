@@ -1,0 +1,23 @@
+.recipepost {
+  //width: 90%;
+  width: 300px;
+  border: 1px solid #e4e4e4;
+  background-color: #f6f6f6;
+  margin: 18px auto;
+
+  break-inside: avoid;
+  box-sizing: border-box;
+  padding: 5px;
+
+  cursor: pointer;
+
+  &__image {
+    max-width: 98%;
+    margin-top: 10px;
+  }
+
+  &__list {
+    > div {
+    }
+  }
+}

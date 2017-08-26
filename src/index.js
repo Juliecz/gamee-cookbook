@@ -8,7 +8,8 @@ import { syncHistoryWithStore } from 'react-router-redux';
 
 import './index.css';
 import App from './containers/App/App';
-import Recipes from './containers/Recipes/index';
+import Recipes from './containers/Recipes';
+import Recipe from './containers/Recipe';
 
 const history = syncHistoryWithStore(browserHistory, store);
 
@@ -17,6 +18,7 @@ ReactDOM.render(
 		<Router history={history}>
 			<Route path="/" component={App}>
 				<Route path="/recipes" component={Recipes}/>
+				<Route path="/detail" component={Recipe}/>
 			</Route>
 		</Router>
 	</Provider>,
