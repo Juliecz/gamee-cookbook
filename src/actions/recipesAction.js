@@ -12,8 +12,18 @@ const saveRecipes = (recipes) => ({
 	recipes
 });
 
-export const selectRecipe = (id) => ({
-	type: types.SELECT_RECIPE,
-	id
+export const getRecipeDetail = (id) => (dispatch) => {
+	API.getRecipeById(id)
+		.then((response) => dispatch(saveRecipeDetail(response.data)))
+		.catch(err => console.log(err));
+};
+
+const saveRecipeDetail = (recipe) => ({
+	type: types.GET_RECIPE_BY_ID,
+	recipe
 });
 
+export const setLoader = (value) => ({
+	type: types.SET_LOADER,
+	value
+});

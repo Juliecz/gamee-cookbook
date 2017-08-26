@@ -5,12 +5,12 @@ import { push } from 'react-router-redux';
 import * as actions from '../../actions/recipesAction';
 
 const mapStateToProps = (state) => ({
-	recipes: state.recipes.list
+	recipes: state.recipes.list,
+	loader: state.recipes.loader
 });
 
 const mapDispatchToProps = (dispatch) => ({
 	getRecipes: () => dispatch(actions.getRecipes()),
-	selectRecipe: (id) => dispatch(actions.selectRecipe(id)),
 	redirect: (path) => dispatch(push(path))
 });
 

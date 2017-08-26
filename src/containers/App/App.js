@@ -6,7 +6,9 @@ class App extends Component {
 		return (
 			<div className="main">
 				<div className="header">
-					<div>Cookbook online</div>
+					<div>
+						<a href="/">Cookbook online</a>
+					</div>
 					<div>Sign in</div>
 				</div>
 				{this.props.children}

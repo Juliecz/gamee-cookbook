@@ -1,4 +1,4 @@
 export const GET_RECIPES = 'GET_RECIPES';
 export const GET_RECIPES_BY_AUTHOR = 'GET_RECIPES_BY_AUTHOR';
-export const GET_RECIPES_BY_ID = 'GET_RECIPES_BY_ID';
-export const SELECT_RECIPE = 'SELECT_RECIPE';
+export const GET_RECIPE_BY_ID = 'GET_RECIPE_BY_ID';
+export const SET_LOADER = 'SET_LOADER';

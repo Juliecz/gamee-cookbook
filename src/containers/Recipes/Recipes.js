@@ -9,16 +9,16 @@ class Recipes extends Component {
 	}
 	
 	render() {
-		const { recipes, selectRecipe, redirect } = this.props;
+		const { recipes, redirect } = this.props;
+		
 		return (<div className="recipes">
 			<h2>Recipes</h2>
 			<div className="recipes__all">
-				{recipes.length
+				{recipes.length > 0
 					&& recipes.map((recipe, i) =>
 						<Recipe
 							key={`recipe_${i}`}
 							recipe={recipe}
-							selectRecipe={selectRecipe}
 							redirect={redirect}
 						/>)}
 			</div>

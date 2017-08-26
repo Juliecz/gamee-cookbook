@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import store from './config/store';
-import { Router, Route, browserHistory } from 'react-router';
+import { IndexRoute, Router, Route, browserHistory } from 'react-router';
 import registerServiceWorker from './config/registerServiceWorker';
 import { syncHistoryWithStore } from 'react-router-redux';
 
@@ -17,8 +17,8 @@ ReactDOM.render(
 	<Provider store={store}>
 		<Router history={history}>
 			<Route path="/" component={App}>
-				<Route path="/recipes" component={Recipes}/>
-				<Route path="/detail" component={Recipe}/>
+				<IndexRoute component={Recipes}/>
+				<Route path="/detail/:id" component={Recipe}/>
 			</Route>
 		</Router>
 	</Provider>,
