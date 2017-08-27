@@ -13,7 +13,7 @@ export const updateRecipes = (recipe) =>
 	api.put('/recipes', recipe);
 
 export const deleteRecipes = (id) =>
-	api.delete('/recipes', id);
+	api.delete(`/recipes/${id}`);
 
 export const signIn = (user) =>
 	api.post('/signin', user);

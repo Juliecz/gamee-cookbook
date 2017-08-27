@@ -15,6 +15,13 @@ export default (state = initialState, action) => {
 			return { ...state, loader: action.value };
 		case types.POST_RECIPES:
 			return { ...state, list: [...state.list, action.recipe] };
+		case types.UPDATE_RECIPES:
+			return {
+				...state,
+				detail: {...action.recipe},
+				list: [...state.list.map((recipe) =>
+					recipe._id === action.recipe._id ? {...action.recipe} : {...recipe} )]
+			};
 		default:
 			return state;
 	}

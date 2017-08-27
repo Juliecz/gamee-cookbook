@@ -1,8 +1,8 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 import { Modal, Button, Glyphicon, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import { WithContext as Tags } from 'react-tag-input';
 
-const RecipeModal = ({ record, show, close, onChange, addTag, deleteTag, postRecipe }) =>
+const RecipeModal = ({ record, show, close, onChange, addTag, deleteTag, postRecipe, deleteRecipe }) =>
 	(<Modal
 		show={show}
 		onHide={close}
@@ -71,10 +71,12 @@ const RecipeModal = ({ record, show, close, onChange, addTag, deleteTag, postRec
 			</FormGroup>
 		</Modal.Body>
 		<Modal.Footer>
+			{ record._id &&
 			<Button
 				bsStyle="danger"
-				onClick={close}
-			>Delete</Button>
+				onClick={() => deleteRecipe(record._id)}
+				style={{ float: 'left' }}
+			>Delete</Button>}
 			<Button onClick={close}>Cancel</Button>
 			<Button
 				bsStyle="primary"

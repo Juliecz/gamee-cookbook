@@ -46,6 +46,18 @@ class Recipe extends Component {
 		})
 	};
 	
+	postRecipe = (record) => {
+		if (record._id) {
+			this.props.updateRecipe(record);
+			return this.closeModal();
+		}
+		return this.props.postRecipe(record);
+	};
+	
+	deleteRecipe = (id) => {
+		this.props.deleteRecipe(id);
+	};
+	
 	render() {
 		const { recipe } = this.props;
 		
@@ -60,7 +72,17 @@ class Recipe extends Component {
 							</span>)}
 					</div>
 					<div>
-						<Button onClick={this.openModal}>Edit</Button>
+						<Button
+							onClick={this.openModal}
+							bsSize="small"
+							style={{margin: '2px'}}
+						>Edit</Button>
+						<Button
+							bsStyle="danger"
+							bsSize="small"
+							style={{margin: '2px'}}
+							onClick={() => this.deleteRecipe(recipe._id)}
+						>Remove</Button>
 					</div>
 				</div>
 				<img
@@ -82,6 +104,8 @@ class Recipe extends Component {
 					onChange={this.onChange}
 					addTag={this.addTag}
 					deleteTag={this.deleteTag}
+					postRecipe={this.postRecipe}
+					deleteRecipe={this.deleteRecipe}
 				/>
 			</div>) }
 		</div>);

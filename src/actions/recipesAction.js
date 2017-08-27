@@ -1,5 +1,6 @@
 import * as types from './types';
 import * as API from '../api/index';
+import { push } from 'react-router-redux';
 
 
 const saveRecipes = (recipes) => ({
@@ -48,17 +49,19 @@ export const getRecipeDetail = (id) => (dispatch) => {
 export const postRecipe = (recipe) => (dispatch) => {
 	API.postRecipes(recipe)
 		.then((response) => dispatch(postRecipeAction(response.data)))
+		.then(() => dispatch(push('/')))
 		.catch(err => console.log(err));
 };
 
 export const updateRecipe = (recipe) => (dispatch) => {
-	API.postRecipes(recipe)
+	API.updateRecipes(recipe)
 		.then((response) => dispatch(updateRecipeAction(response.data)))
 		.catch(err => console.log(err));
 };
 
 export const deleteRecipe = (id) => (dispatch) => {
-	API.postRecipes(id)
+	API.deleteRecipes(id)
 		.then(() => dispatch(deleteRecipeAction(id)))
+		.then(() => dispatch(push('/')))
 		.catch(err => console.log(err));
 };
