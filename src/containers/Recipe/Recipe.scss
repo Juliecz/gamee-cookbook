@@ -34,6 +34,21 @@
   &__directions {
     text-align: justify;
   }
+  &__time {
+    display: flex;
+    flex-direction: row;
+    padding: 15px;
+    margin-top: 10px;
+    background-color: white;
+    border: 1px solid gray;
+
+    .glyphicon-time {
+      font-size: 23px;
+    }
+    &-info {
+      padding: 4px 0 4px 10px;
+    }
+  }
 }
 
 .ReactTags {

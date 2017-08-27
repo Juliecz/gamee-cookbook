@@ -1,8 +1,8 @@
 import React from 'react';
-import { Modal, Button, Glyphicon, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
-import { WithContext as Tags } from 'react-tag-input';
+import {Modal, Button, Glyphicon, FormGroup, FormControl, ControlLabel} from 'react-bootstrap';
+import {WithContext as Tags} from 'react-tag-input';
 
-const RecipeModal = ({ record, show, close, onChange, addTag, deleteTag, postRecipe }) =>
+const RecipeModal = ({record, show, close, onChange, addTag, deleteTag, postRecipe, deleteIngredient, addIngredient}) =>
 	(<Modal
 		show={show}
 		onHide={close}
@@ -33,11 +33,22 @@ const RecipeModal = ({ record, show, close, onChange, addTag, deleteTag, postRec
 			</FormGroup>
 			<FormGroup>
 				<ControlLabel>Ingredients</ControlLabel>
-				<FormControl
-					type="text"
-					id="name"
-					placeholder="Ingredients"
-					render={() => <div>goflk sldjfsdf</div>}
+				<div className="ReactTags">
+					{ record
+					&& record.ingredients
+					&& record.ingredients.map((ingredient) =>
+						<span className="ReactTags__tag">
+							{ingredient}
+							<a
+								className="ReactTags__remove"
+								onClick={() => deleteIngredient(ingredient)}
+							>x</a>
+						</span>) }
+				</div>
+				<Tags
+					handleAddition={addIngredient}
+					handleDelete={() =>
+						deleteIngredient(record.ingredients[record.ingredients.length - 1])}
 				/>
 			</FormGroup>
 			<FormGroup>
@@ -79,7 +90,7 @@ const RecipeModal = ({ record, show, close, onChange, addTag, deleteTag, postRec
 				<Tags
 					handleAddition={addTag}
 					handleDelete={() =>
-						deleteTag(record.categories[record.categories.length-1])}
+						deleteTag(record.categories[record.categories.length - 1])}
 				/>
 			</FormGroup>
 		</Modal.Body>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Glyphicon } from 'react-bootstrap';
 import Modal from '../../components/RecipeModal/RecipeModal';
 import './Recipe.css';
 
@@ -42,6 +42,27 @@ class Recipe extends Component {
 				{
 					...this.state.record,
 					categories: [...this.state.record.categories, tag]
+				}
+		})
+	};
+	
+	deleteIngredient = (tag) => {
+		this.setState({
+			record: {
+				...this.state.record,
+				ingredients: this.state.record.ingredients
+					? this.state.record.ingredients.filter((c) => c !== tag) : []
+			}
+		});
+	};
+	
+	addIngredient = (tag) => {
+		this.setState({
+			record:
+				{
+					...this.state.record,
+					ingredients: this.state.record.ingredients
+						? [...this.state.record.ingredients, tag] : [tag]
 				}
 		})
 	};
@@ -97,7 +118,15 @@ class Recipe extends Component {
 					alt="Image"
 					className="detail__image"
 				/>
-				{recipe.ingredients &&
+				{recipe.time &&
+				<div className="detail__time">
+					<Glyphicon glyph="time"/>
+					<div className="detail__time-info">
+						<span>Doba přípravy: </span>
+						<span>{recipe.time} minut</span>
+					</div>
+				</div>}
+				{recipe.ingredients && recipe.ingredients.length > 0 &&
 				<div className="detail__ingredients">
 					<h4>Ingredients</h4>
 					<ul>
@@ -116,6 +145,8 @@ class Recipe extends Component {
 					addTag={this.addTag}
 					deleteTag={this.deleteTag}
 					postRecipe={this.postRecipe}
+					addIngredient={this.addIngredient}
+					deleteIngredient={this.deleteIngredient}
 				/>
 			</div>) }
 		</div>);

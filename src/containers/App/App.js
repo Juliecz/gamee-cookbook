@@ -43,6 +43,27 @@ class App extends Component {
 		})
 	};
 	
+	deleteIngredient = (tag) => {
+		this.setState({
+			record: {
+				...this.state.record,
+				ingredients: this.state.record.ingredients
+					? this.state.record.ingredients.filter((c) => c !== tag) : []
+			}
+		});
+	};
+	
+	addIngredient = (tag) => {
+		this.setState({
+			record:
+				{
+					...this.state.record,
+					ingredients: this.state.record.ingredients
+						? [...this.state.record.ingredients, tag] : [tag]
+				}
+		})
+	};
+	
 	postRecipe = (recipe) => {
 		this.props.postRecipe(recipe);
 		//TODO
@@ -114,6 +135,8 @@ class App extends Component {
 					addTag={this.addTag}
 					deleteTag={this.deleteTag}
 					postRecipe={this.postRecipe}
+					addIngredient={this.addIngredient}
+					deleteIngredient={this.deleteIngredient}
 				/>
 			</div>
 		);
