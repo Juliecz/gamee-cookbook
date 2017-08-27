@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Button, Modal, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
+import { Button, Modal, FormGroup, FormControl, ControlLabel, Glyphicon } from 'react-bootstrap';
 import RecipeModal from '../../components/RecipeModal/RecipeModal';
 import './App.css';
 
@@ -56,11 +56,17 @@ class App extends Component {
 			<div className="main">
 				<div className="header">
 					<div>
-						<a href="/">Cookbook online</a>
+						<a href="/">
+							<Glyphicon
+								glyph="cutlery"
+								style={{ margin: '10px' }}
+							/>
+							Cookbook
+						</a>
 					</div>
 					<div>
 						<Button bsSize="small" onClick={this.openRecipeModal}>Add new recipe</Button>
-						<Button bsStyle="link" onClick={this.openModalSignIn}>Sign in</Button>
+						<a onClick={this.openModalSignIn}>Sign in</a>
 					</div>
 				</div>
 				{this.props.children}

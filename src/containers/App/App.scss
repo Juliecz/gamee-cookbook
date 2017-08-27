@@ -3,14 +3,16 @@
 }
 
 .header {
-  //background-color: #eeeeee;
+  background: #bc2328;
   height: 50px;
-  color: black;
   font-weight: 600;
-  border-bottom: 1px solid black;
   display: flex;
   justify-content: space-between;
   justify-self: center;
+
+  a {
+    color: white;
+  }
 
   > div {
     align-self: center;

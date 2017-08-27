@@ -66,10 +66,17 @@ class Recipe extends Component {
 				<div className="detail__header">
 					<div>
 						<h3>{recipe.name}</h3>
-						{recipe.categories.map((tag) =>
-							<span className="ReactTags__tag">
+						<div className="detail__header-tags">
+							<span
+								style={{
+									padding: '7px'
+								}}
+							>Tags:</span>
+							{recipe.categories.map((tag) =>
+								<span className="ReactTags__tag">
 								{tag}
 							</span>)}
+						</div>
 					</div>
 					<div>
 						<Button
@@ -90,10 +97,14 @@ class Recipe extends Component {
 					alt="Image"
 					className="detail__image"
 				/>
-				<div>
-					{ recipe.ingredients && recipe.ingredients.map((ingredient) => <div>{ingredient}</div>) }
-				</div>
-				<div>
+				{recipe.ingredients &&
+				<div className="detail__ingredients">
+					<h4>Ingredients</h4>
+					<ul>
+						{recipe.ingredients.map((ingredient) => <li>{ingredient}</li>) }
+					</ul>
+				</div>}
+				<div className="detail__directions">
 					{ recipe.directions}
 				</div>
 				
@@ -105,7 +116,6 @@ class Recipe extends Component {
 					addTag={this.addTag}
 					deleteTag={this.deleteTag}
 					postRecipe={this.postRecipe}
-					deleteRecipe={this.deleteRecipe}
 				/>
 			</div>) }
 		</div>);

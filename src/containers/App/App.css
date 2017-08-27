@@ -2,13 +2,14 @@
   text-align: center; }
 
 .header {
+  background: #bc2328;
   height: 50px;
-  color: black;
   font-weight: 600;
-  border-bottom: 1px solid black;
   display: flex;
   justify-content: space-between;
   justify-self: center; }
+  .header a {
+    color: white; }
   .header > div {
     align-self: center;
     padding: 30px; }

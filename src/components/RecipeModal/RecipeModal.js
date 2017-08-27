@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal, Button, Glyphicon, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import { WithContext as Tags } from 'react-tag-input';
 
-const RecipeModal = ({ record, show, close, onChange, addTag, deleteTag, postRecipe, deleteRecipe }) =>
+const RecipeModal = ({ record, show, close, onChange, addTag, deleteTag, postRecipe }) =>
 	(<Modal
 		show={show}
 		onHide={close}
@@ -16,8 +16,28 @@ const RecipeModal = ({ record, show, close, onChange, addTag, deleteTag, postRec
 				<FormControl
 					type="text"
 					id="name"
+					placeholder="Name"
 					value={record.name}
 					onChange={onChange}
+				/>
+			</FormGroup>
+			<FormGroup>
+				<ControlLabel>Image</ControlLabel>
+				<FormControl
+					type="text"
+					id="image"
+					placeholder="Image"
+					value={record.image}
+					onChange={onChange}
+				/>
+			</FormGroup>
+			<FormGroup>
+				<ControlLabel>Ingredients</ControlLabel>
+				<FormControl
+					type="text"
+					id="name"
+					placeholder="Ingredients"
+					render={() => <div>goflk sldjfsdf</div>}
 				/>
 			</FormGroup>
 			<FormGroup>
@@ -31,18 +51,11 @@ const RecipeModal = ({ record, show, close, onChange, addTag, deleteTag, postRec
 				/>
 			</FormGroup>
 			<FormGroup>
-				<ControlLabel>Ingredients</ControlLabel>
-				<FormControl
-					type="text"
-					id="name"
-					render={() => <div>goflk sldjfsdf</div>}
-				/>
-			</FormGroup>
-			<FormGroup>
 				<ControlLabel>Time</ControlLabel>
 				<FormControl
 					type="number"
 					id="time"
+					placeholder="Time"
 					value={record.time}
 					onChange={onChange}
 					max="500"
@@ -71,12 +84,6 @@ const RecipeModal = ({ record, show, close, onChange, addTag, deleteTag, postRec
 			</FormGroup>
 		</Modal.Body>
 		<Modal.Footer>
-			{ record._id &&
-			<Button
-				bsStyle="danger"
-				onClick={() => deleteRecipe(record._id)}
-				style={{ float: 'left' }}
-			>Delete</Button>}
 			<Button onClick={close}>Cancel</Button>
 			<Button
 				bsStyle="primary"

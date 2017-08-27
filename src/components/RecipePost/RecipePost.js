@@ -16,14 +16,17 @@ const RecipePost = ({ recipe, redirect }) =>
 			alt="Image"
 		/>}
 		
-		<h4>{recipe.name}</h4>
-		<div className="recipepost__list">
-			{recipe.ingredients && recipe.ingredients.length
-			&& recipe.ingredients.map((item, i) =>
-				(<div
-					key={`li_${i}`}>
+		<div className="recipepost__info">
+			<h4>{recipe.name}</h4>
+			<div className="recipepost__list">
+				{recipe.categories && recipe.categories.length > 0
+				&& recipe.categories.map((item, i) =>
+					(<span
+						className="ReactTags__tag"
+						key={`li_${i}`}>
 					{item}
-				</div>))}
+				</span>))}
+			</div>
 		</div>
 	</div>);
 
