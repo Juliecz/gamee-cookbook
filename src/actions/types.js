@@ -8,7 +8,7 @@ export const DELETE_RECIPES = 'DELETE_RECIPES';
 
 export const SET_LOADER = 'SET_LOADER';
 
-
 export const SINGIN = 'SIGNIN';
+export const SIGNIN_SUCCESS = 'SIGNIN_SUCCESS';
 export const SINGUP = 'SIGNUP';
 export const LOGOUT = 'LOGOUT';

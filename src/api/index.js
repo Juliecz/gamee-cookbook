@@ -17,3 +17,6 @@ export const deleteRecipes = (id) =>
 
 export const signIn = (user) =>
 	api.post('/signin', user);
+
+export const signUp = (user) =>
+	api.post('/signup', user);

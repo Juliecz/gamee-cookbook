@@ -13,6 +13,10 @@ class App extends Component {
 		};
 	}
 	
+	componentDidMount() {
+		this.props.authenticate();
+	}
+	
 	closeModalSignIn = () => this.setState({ showModalSignIn: false, record: {} });
 	openModalSignIn = () => this.setState({ showModalSignIn: true });
 	onChange = (e) => this.setState({
@@ -70,8 +74,13 @@ class App extends Component {
 		this.closeRecipeModal();
 	};
 	
+	redirectToSignUp = () => {
+		this.closeModalSignIn();
+		this.props.redirect('/signup');
+	};
+	
 	render() {
-		const { signIn } = this.props;
+		const { signIn, redirect, user, logOut } = this.props;
 		
 		return (
 			<div className="main">
@@ -86,8 +95,25 @@ class App extends Component {
 						</a>
 					</div>
 					<div>
-						<Button bsSize="small" onClick={this.openRecipeModal}>Add new recipe</Button>
-						<a onClick={this.openModalSignIn}>Sign in</a>
+						{user && Object.keys(user).length > 0
+							? <div style={{
+								display: 'flex',
+								flexDirection: 'row'
+							}}>
+								<div style={{
+									padding: '5px'
+								}}>
+									<Button bsSize="small" onClick={this.openRecipeModal}>Add new recipe</Button>
+								</div>
+								<div style={{
+									paddingLeft: '15px'
+								}}>
+									<div>{user.name}</div>
+									<a onClick={logOut}>Log out</a>
+								</div>
+							</div> : <div>
+								<a onClick={this.openModalSignIn}>Sign in</a>
+							</div>}
 					</div>
 				</div>
 				{this.props.children}
@@ -119,11 +145,18 @@ class App extends Component {
 								onChange={this.onChange}
 							/>
 						</FormGroup>
-						
+						<p style={{ textAlign: 'center' }}>or</p>
+						<Button
+							onClick={this.redirectToSignUp}
+							style={{ width: '100%' }}
+						>Sign up</Button>
 					</Modal.Body>
 					<Modal.Footer>
 						<Button onClick={this.closeModalSignIn}>Cancel</Button>
-						<Button bsStyle="primary" onClick={() => signIn(this.state.record)}>Sign in</Button>
+						<Button
+							bsStyle="primary"
+							onClick={() => signIn(this.state.record)}
+						>Sign in</Button>
 					</Modal.Footer>
 				</Modal>
 				

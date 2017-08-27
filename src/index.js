@@ -10,6 +10,7 @@ import './index.css';
 import App from './containers/App/index';
 import Recipes from './containers/Recipes';
 import Recipe from './containers/Recipe';
+import SignUp from './containers/SignUp';
 
 const history = syncHistoryWithStore(browserHistory, store);
 
@@ -19,6 +20,7 @@ ReactDOM.render(
 			<Route path="/" component={App}>
 				<IndexRoute component={Recipes}/>
 				<Route path="/detail/:id" component={Recipe}/>
+				<Route path="signup" components={SignUp}/>
 			</Route>
 		</Router>
 	</Provider>,
