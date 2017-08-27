@@ -7,6 +7,7 @@
   height: 50px;
   font-weight: 600;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   justify-self: center;
 
@@ -18,5 +19,27 @@
     align-self: center;
     padding: 30px;
   }
+  &__user {
+    &-auth {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+    }
+  }
+}
 
+@media screen and (max-width: 500px) {
+  .header {
+    flex-direction: column;
+    height: 120px;
+
+    &__title {
+
+      border-bottom: 1px solid #f9f9f9;
+    }
+    > div {
+      padding: 10px;
+      width: 100%;
+    }
+  }
 }

@@ -85,7 +85,7 @@ class App extends Component {
 		return (
 			<div className="main">
 				<div className="header">
-					<div>
+					<div className="header__title">
 						<a href="/">
 							<Glyphicon
 								glyph="cutlery"
@@ -94,12 +94,9 @@ class App extends Component {
 							Cookbook
 						</a>
 					</div>
-					<div>
+					<div className="header__user">
 						{user && Object.keys(user).length > 0
-							? <div style={{
-								display: 'flex',
-								flexDirection: 'row'
-							}}>
+							? <div className="header__user-auth">
 								<div style={{
 									padding: '5px'
 								}}>
@@ -111,7 +108,8 @@ class App extends Component {
 									<div>{user.name}</div>
 									<a onClick={logOut}>Log out</a>
 								</div>
-							</div> : <div>
+							</div>
+							: <div>
 								<a onClick={this.openModalSignIn}>Sign in</a>
 							</div>}
 					</div>
