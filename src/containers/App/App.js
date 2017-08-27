@@ -126,12 +126,12 @@ class App extends Component {
 					</Modal.Header>
 					<Modal.Body>
 						<FormGroup>
-							<ControlLabel>Username</ControlLabel>
+							<ControlLabel>Email</ControlLabel>
 							<FormControl
-								type="text"
-								id="username"
-								placeholder="Username"
-								value={this.state.record.username || ''}
+								type="email"
+								id="email"
+								placeholder="Email"
+								value={this.state.record.email || ''}
 								onChange={this.onChange}
 							/>
 						</FormGroup>
@@ -161,6 +161,7 @@ class App extends Component {
 				</Modal>
 				
 				<RecipeModal
+					user={user}
 					record={this.state.record}
 					show={this.state.showRecipeModal}
 					close={this.closeRecipeModal}

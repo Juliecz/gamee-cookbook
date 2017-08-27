@@ -80,7 +80,7 @@ class Recipe extends Component {
 	};
 	
 	render() {
-		const { recipe } = this.props;
+		const { recipe, user } = this.props;
 		
 		return (<div className="detail">
 			{ recipe && Object.keys(recipe).length > 0 && (<div>
@@ -99,6 +99,7 @@ class Recipe extends Component {
 							</span>)}
 						</div>
 					</div>
+					{ recipe.authorId === user._id &&
 					<div>
 						<Button
 							onClick={this.openModal}
@@ -111,7 +112,7 @@ class Recipe extends Component {
 							style={{margin: '2px'}}
 							onClick={() => this.deleteRecipe(recipe._id)}
 						>Remove</Button>
-					</div>
+					</div>}
 				</div>
 				<img
 					src={recipe.image}

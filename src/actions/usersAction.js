@@ -12,8 +12,10 @@ const logOutSuccess = () => ({
 });
 
 export const authenticate = () => (dispatch) => {
-	const user = JWTDecode(localStorage.getItem('accessToken'));
-	dispatch(signInSuccess(user));
+	if (localStorage.getItem('accessToken')) {
+		const user = JWTDecode(localStorage.getItem('accessToken'));
+		dispatch(signInSuccess(user));
+	}
 };
 
 export const signIn = (user) => (dispatch) => {

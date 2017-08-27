@@ -2,7 +2,7 @@ import React from 'react';
 import {Modal, Button, Glyphicon, FormGroup, FormControl, ControlLabel} from 'react-bootstrap';
 import {WithContext as Tags} from 'react-tag-input';
 
-const RecipeModal = ({record, show, close, onChange, addTag, deleteTag, postRecipe, deleteIngredient, addIngredient}) =>
+const RecipeModal = ({user, record, show, close, onChange, addTag, deleteTag, postRecipe, deleteIngredient, addIngredient}) =>
 	(<Modal
 		show={show}
 		onHide={close}

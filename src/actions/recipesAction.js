@@ -46,7 +46,9 @@ export const getRecipeDetail = (id) => (dispatch) => {
 		.catch(err => console.log(err));
 };
 
-export const postRecipe = (recipe) => (dispatch) => {
+export const postRecipe = (recipe) => (dispatch, getState) => {
+	const userId = getState().user._id;
+	recipe = { ...recipe, authorId: userId };
 	API.postRecipes(recipe)
 		.then((response) => dispatch(postRecipeAction(response.data)))
 		.then(() => dispatch(push('/')))
