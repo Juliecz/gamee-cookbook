@@ -13,6 +13,8 @@ export default (state = initialState, action) => {
 			return { ...state, detail: action.recipe };
 		case types.SET_LOADER:
 			return { ...state, loader: action.value };
+		case types.POST_RECIPES:
+			return { ...state, list: [...state.list, action.recipe] };
 		default:
 			return state;
 	}

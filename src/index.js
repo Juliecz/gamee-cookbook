@@ -7,7 +7,7 @@ import registerServiceWorker from './config/registerServiceWorker';
 import { syncHistoryWithStore } from 'react-router-redux';
 
 import './index.css';
-import App from './containers/App/App';
+import App from './containers/App/index';
 import Recipes from './containers/Recipes';
 import Recipe from './containers/Recipe';
 
