@@ -1,6 +1,11 @@
 import React, {Component} from 'react';
 import { Button, Modal, FormGroup, FormControl, ControlLabel, Glyphicon } from 'react-bootstrap';
 import RecipeModal from '../../components/RecipeModal/RecipeModal';
+
+import Alert from 'react-s-alert';
+import 'react-s-alert/dist/s-alert-default.css';
+import 'react-s-alert/dist/s-alert-css-effects/jelly.css';
+
 import './App.css';
 
 class App extends Component {
@@ -100,7 +105,10 @@ class App extends Component {
 								<div style={{
 									padding: '5px'
 								}}>
-									<Button bsSize="small" onClick={this.openRecipeModal}>Add new recipe</Button>
+									<Button
+										bsSize="small"
+										onClick={this.openRecipeModal}
+									>Add new recipe</Button>
 								</div>
 								<div style={{
 									paddingLeft: '15px'
@@ -143,11 +151,12 @@ class App extends Component {
 								onChange={this.onChange}
 							/>
 						</FormGroup>
-						<p style={{ textAlign: 'center' }}>or</p>
-						<Button
-							onClick={this.redirectToSignUp}
-							style={{ width: '100%' }}
-						>Sign up</Button>
+						<p style={{ textAlign: 'center' }}>
+							or
+							<a
+								onClick={this.redirectToSignUp}
+							> Sign up </a>
+						</p>
 					</Modal.Body>
 					<Modal.Footer>
 						<Button onClick={this.closeModalSignIn}>Cancel</Button>
@@ -170,6 +179,8 @@ class App extends Component {
 					addIngredient={this.addIngredient}
 					deleteIngredient={this.deleteIngredient}
 				/>
+				
+				<Alert stack={{ limit: 5 }}/>
 			</div>
 		);
 	}

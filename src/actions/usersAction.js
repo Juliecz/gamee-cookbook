@@ -1,5 +1,7 @@
 import * as API from '../api/index';
 import * as types from './types';
+import * as messages from './messages';
+import alert from '../helpers/alert';
 import JWTDecode from 'jwt-decode';
 
 const signInSuccess = (user) => ({
@@ -24,7 +26,7 @@ export const signIn = (user) => (dispatch) => {
 			localStorage.setItem('accessToken', response.data);
 			dispatch(authenticate());
 		})
-		.catch(err => console.log(err));
+		.catch(err => alert(messages.SIGN_IN_ERROR));
 };
 
 export const signUp = (user) => (dispatch) => {

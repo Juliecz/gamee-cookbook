@@ -46,6 +46,7 @@ const RecipeModal = ({user, record, show, close, onChange, addTag, deleteTag, po
 						</span>) }
 				</div>
 				<Tags
+					placeholder="Add new ingredient"
 					handleAddition={addIngredient}
 					handleDelete={() =>
 						deleteIngredient(record.ingredients[record.ingredients.length - 1])}
@@ -59,6 +60,7 @@ const RecipeModal = ({user, record, show, close, onChange, addTag, deleteTag, po
 					id="directions"
 					value={record.directions}
 					onChange={onChange}
+					rows="10"
 				/>
 			</FormGroup>
 			<FormGroup>

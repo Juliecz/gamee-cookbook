@@ -1,7 +1,8 @@
 import * as types from './types';
 import * as API from '../api/index';
 import { push } from 'react-router-redux';
-
+import * as messages from './messages';
+import alert from '../helpers/alert';
 
 const saveRecipes = (recipes) => ({
 	type: types.GET_RECIPES,
@@ -37,13 +38,13 @@ const deleteRecipeAction = (id) => ({
 export const getRecipes = () => (dispatch) => {
 	API.getRecipes()
 		.then((response) => dispatch(saveRecipes(response.data)))
-		.catch(err => console.log(err));
+		.catch(err => alert('error', messages.SERVER_NOT_RESPONDING));
 };
 
 export const getRecipeDetail = (id) => (dispatch) => {
 	API.getRecipeById(id)
 		.then((response) => dispatch(saveRecipeDetail(response.data)))
-		.catch(err => console.log(err));
+		.catch(err => alert('error', messages.SERVER_NOT_RESPONDING));
 };
 
 export const postRecipe = (recipe) => (dispatch, getState) => {
@@ -52,18 +53,18 @@ export const postRecipe = (recipe) => (dispatch, getState) => {
 	API.postRecipes(recipe)
 		.then((response) => dispatch(postRecipeAction(response.data)))
 		.then(() => dispatch(push('/')))
-		.catch(err => console.log(err));
+		.catch(err => alert('error', messages.SERVER_NOT_RESPONDING));
 };
 
 export const updateRecipe = (recipe) => (dispatch) => {
 	API.updateRecipes(recipe)
 		.then((response) => dispatch(updateRecipeAction(response.data)))
-		.catch(err => console.log(err));
+		.catch(err => alert('error', messages.SERVER_NOT_RESPONDING));
 };
 
 export const deleteRecipe = (id) => (dispatch) => {
 	API.deleteRecipes(id)
 		.then(() => dispatch(deleteRecipeAction(id)))
 		.then(() => dispatch(push('/')))
-		.catch(err => console.log(err));
+		.catch(err => alert('error', messages.SERVER_NOT_RESPONDING));
 };
