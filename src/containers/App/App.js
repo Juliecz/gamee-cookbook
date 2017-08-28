@@ -28,6 +28,8 @@ class App extends Component {
 	
 	onChange = (e) => this.props.setSigninForm(e.target.id, e.target.value);
 	
+	onChangeState = (e) => this.setState({ record: {...this.state.record, [e.target.id]: e.target.value} });
+	
 	closeRecipeModal = () => this.setState({ showRecipeModal: false, record: {} });
 	openRecipeModal = () => this.setState({ showRecipeModal: true });
 	
@@ -173,7 +175,7 @@ class App extends Component {
 					record={this.state.record}
 					show={this.state.showRecipeModal}
 					close={this.closeRecipeModal}
-					onChange={this.onChange}
+					onChange={this.onChangeState}
 					addTag={this.addTag}
 					deleteTag={this.deleteTag}
 					postRecipe={this.postRecipe}
