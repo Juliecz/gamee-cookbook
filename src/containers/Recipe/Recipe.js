@@ -123,8 +123,8 @@ class Recipe extends Component {
 				<div className="detail__time">
 					<Glyphicon glyph="time"/>
 					<div className="detail__time-info">
-						<span>Doba přípravy: </span>
-						<span>{recipe.time} minut</span>
+						<span>Time: </span>
+						<span>{recipe.time} minutes</span>
 					</div>
 				</div>}
 				{recipe.ingredients && recipe.ingredients.length > 0 &&

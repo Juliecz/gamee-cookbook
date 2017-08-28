@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import RecipeComponent from './Recipe';
-import * as actions from '../../actions/recipesAction';
+import * as actions from '../../actions/recipesActions';
 
 const mapStateToProps = (state) => {
 	return {

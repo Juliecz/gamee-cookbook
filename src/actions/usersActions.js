@@ -1,8 +1,10 @@
 import * as API from '../api/index';
 import * as types from './types';
 import * as messages from './messages';
+import * as formsActions from './formsActions';
 import alert from '../helpers/alert';
 import JWTDecode from 'jwt-decode';
+import { push } from 'react-router-redux';
 
 const signInSuccess = (user) => ({
 	type: types.SIGNIN_SUCCESS,
@@ -26,6 +28,12 @@ export const signIn = (user) => (dispatch) => {
 			localStorage.setItem('accessToken', response.data);
 			dispatch(authenticate());
 		})
+		.then(() => dispatch(push('/')))
+		.then(() =>
+			dispatch(formsActions.objectUpdate(
+				'signin',
+				{ show: false, name: '', email: '', password: '' }
+			)))
 		.catch(err => alert(messages.SIGN_IN_ERROR));
 };
 
@@ -35,6 +43,7 @@ export const signUp = (user) => (dispatch) => {
 			localStorage.setItem('accessToken', response.data);
 			dispatch(authenticate());
 		})
+		.then(() => dispatch(push('/')))
 		.catch((err) => console.log('Error', err));
 };
 

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import SignupComponent from './SignUp';
-import * as actions from '../../actions/usersAction';
+import * as actions from '../../actions/usersActions';
 import { push } from 'react-router-redux';
 
 const mapStateToProps = (state) => ({ });

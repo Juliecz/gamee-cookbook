@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import RecipesComponent from './Recipes';
 import { push } from 'react-router-redux';
 
-import * as actions from '../../actions/recipesAction';
+import * as actions from '../../actions/recipesActions';
 
 const mapStateToProps = (state) => ({
 	recipes: state.recipes.list,

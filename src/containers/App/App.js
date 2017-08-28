@@ -12,7 +12,6 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			showModalSignIn: false,
 			showRecipeModal: false,
 			record: {}
 		};
@@ -22,11 +21,12 @@ class App extends Component {
 		this.props.authenticate();
 	}
 	
-	closeModalSignIn = () => this.setState({ showModalSignIn: false, record: {} });
-	openModalSignIn = () => this.setState({ showModalSignIn: true });
-	onChange = (e) => this.setState({
-		record: { ...this.state.record, [e.target.id]: e.target.value}
-	});
+	closeModalSignIn = () =>
+		this.props.formsObjectUpdate('signin', { show: false, name: '', email: '', password: '' });
+	
+	openModalSignIn = () => this.props.setSigninForm('show', true);
+	
+	onChange = (e) => this.props.setSigninForm(e.target.id, e.target.value);
 	
 	closeRecipeModal = () => this.setState({ showRecipeModal: false, record: {} });
 	openRecipeModal = () => this.setState({ showRecipeModal: true });
@@ -85,7 +85,7 @@ class App extends Component {
 	};
 	
 	render() {
-		const { signIn, redirect, user, logOut } = this.props;
+		const { signIn, redirect, user, logOut, signin } = this.props;
 		
 		return (
 			<div className="main">
@@ -124,7 +124,7 @@ class App extends Component {
 				</div>
 				{this.props.children}
 				<Modal
-					show={this.state.showModalSignIn}
+					show={signin.show}
 					onHide={this.closeModalSignIn}
 				>
 					<Modal.Header closeButton>
@@ -137,7 +137,7 @@ class App extends Component {
 								type="email"
 								id="email"
 								placeholder="Email"
-								value={this.state.record.email || ''}
+								value={signin.email || ''}
 								onChange={this.onChange}
 							/>
 						</FormGroup>
@@ -147,7 +147,7 @@ class App extends Component {
 								id="password"
 								type="password"
 								placeholder="Password"
-								value={this.state.record.password || ''}
+								value={signin.password || ''}
 								onChange={this.onChange}
 							/>
 						</FormGroup>
@@ -162,7 +162,8 @@ class App extends Component {
 						<Button onClick={this.closeModalSignIn}>Cancel</Button>
 						<Button
 							bsStyle="primary"
-							onClick={() => signIn(this.state.record)}
+							onClick={() =>
+								signIn({ email: signin.email, password: signin.password })}
 						>Sign in</Button>
 					</Modal.Footer>
 				</Modal>
