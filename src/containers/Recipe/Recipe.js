@@ -108,8 +108,9 @@ class Recipe extends Component {
 							</span>)}
 						</div>
 					</div>
-					{ recipe.authorId === user._id &&
-					<div>
+					{ user && Object.keys(user).length > 0
+					&& recipe.authorId === user._id
+					&& <div>
 						<Button
 							onClick={this.openModal}
 							bsSize="small"

@@ -4,22 +4,29 @@
   margin: auto;
 
   &__header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-self: center;
-    align-items: center;
-    padding: 15px;
-    margin-bottom: 20px;
+
+    //padding: 15px;
+    //margin-bottom: 20px;
+
+    &-bar {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-self: center;
+      align-items: center;
+      margin: 30px;
+
+      input {
+        min-width: 200px;
+        max-width: 400px;
+        width: 60%;
+      }
+    }
 
     > h3 {
       width: 100%;
       font-weight: bolder;
     }
-    > input {
-      margin-top: 8px;
-      width: 60%;
-    };
   }
 
   &__all {
