@@ -103,7 +103,6 @@ class Recipes extends Component {
 					/>
 					{user && Object.keys(user).length > 0
 					&& <Button
-						bsSize="small"
 						onClick={this.openRecipeModal}
 					>Add new recipe</Button>}
 				</div>
