@@ -5,10 +5,12 @@ import * as formsActions from '../../actions/formsActions';
 import * as recipeActions from '../../actions/recipesActions';
 import { push } from 'react-router-redux';
 
-const mapStateToProps = (state) => ({
-	user: state.user,
-	signin: state.forms.signin
-});
+const mapStateToProps = (state) => {
+	return {
+		user: state.user,
+		signin: state.forms.signin,
+	};
+};
 
 const mapDispatchToProps = (dispatch) => ({
 	signIn: (user) => dispatch(actions.signIn(user)),

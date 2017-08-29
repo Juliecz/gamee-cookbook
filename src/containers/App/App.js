@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Button, Modal, FormGroup, FormControl, ControlLabel, Glyphicon } from 'react-bootstrap';
 import RecipeModal from '../../components/RecipeModal/RecipeModal';
 
@@ -87,7 +87,7 @@ class App extends Component {
 	};
 	
 	render() {
-		const { signIn, redirect, user, logOut, signin } = this.props;
+		const { signIn, redirect, user, logOut, signin, toastr } = this.props;
 		
 		return (
 			<div className="main">
@@ -100,6 +100,7 @@ class App extends Component {
 							/>
 							Cookbook
 						</a>
+						<Button onClick={() => toastr.error('My title')}>alert</Button>
 					</div>
 					<div className="header__user">
 						{user && Object.keys(user).length > 0
