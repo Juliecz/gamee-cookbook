@@ -5,7 +5,8 @@ import * as actions from '../../actions/recipesActions';
 const mapStateToProps = (state) => {
 	return {
 		recipe: state.recipes.detail,
-		user: state.user
+		user: state.user,
+		loader: state.recipes.loader
 	};
 };
 

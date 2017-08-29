@@ -2,7 +2,8 @@ import * as types from '../actions/types';
 
 const initialState = {
 	list: [],
-	detail: {}
+	detail: {},
+	loader: false
 };
 
 export default (state = initialState, action) => {

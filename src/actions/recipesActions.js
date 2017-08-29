@@ -36,15 +36,25 @@ const deleteRecipeAction = (id) => ({
 
 
 export const getRecipes = () => (dispatch) => {
+	dispatch(setLoader(true));
 	API.getRecipes()
 		.then((response) => dispatch(saveRecipes(response.data)))
-		.catch(err => alert('error', messages.SERVER_NOT_RESPONDING));
+		.then(() => dispatch(setLoader(false)))
+		.catch(err => {
+			alert('error', messages.SERVER_NOT_RESPONDING);
+			dispatch(setLoader(false))
+		});
 };
 
 export const getRecipeDetail = (id) => (dispatch) => {
+	dispatch(setLoader(true));
 	API.getRecipeById(id)
 		.then((response) => dispatch(saveRecipeDetail(response.data)))
-		.catch(err => alert('error', messages.SERVER_NOT_RESPONDING));
+		.then(() => dispatch(setLoader(false)))
+		.catch(err => {
+			alert('error', messages.SERVER_NOT_RESPONDING);
+			dispatch(setLoader(false));
+		});
 };
 
 export const postRecipe = (recipe) => (dispatch, getState) => {

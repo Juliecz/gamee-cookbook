@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Glyphicon } from 'react-bootstrap';
 import Modal from '../../components/RecipeModal/RecipeModal';
+import { ClipLoader } from 'halogen';
 import './Recipe.css';
 
 class Recipe extends Component {
@@ -80,8 +81,16 @@ class Recipe extends Component {
 	};
 	
 	render() {
-		const { recipe, user } = this.props;
-		
+		const { recipe, user, loader } = this.props;
+		if (loader) {
+			return <div style={{ marginTop: '200px' }}>
+				<ClipLoader
+					color="#bc2328"
+					size="80px"
+					margin="500px"
+				/>
+			</div>
+		}
 		return (<div className="detail">
 			{ recipe && Object.keys(recipe).length > 0 && (<div>
 				<div className="detail__header">
