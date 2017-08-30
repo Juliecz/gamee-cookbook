@@ -1,6 +1,6 @@
 # Gamee cookbook
 
-![Application](assets/screenshot.png)
+![Application](src/assets/screenshot.png)
 
 Start application:
 
