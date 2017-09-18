@@ -1,6 +1,7 @@
 import React from 'react';
-import {Modal, Button, Glyphicon, FormGroup, FormControl, ControlLabel} from 'react-bootstrap';
-import {WithContext as Tags} from 'react-tag-input';
+import { Modal, Button, Glyphicon, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
+import { WithContext as Tags } from 'react-tag-input';
+import Canvas from '../Canvas/index';
 import './RecipeModal.css';
 
 const RecipeModal = ({user, record, show, close, onChange, addTag, deleteTag, postRecipe, deleteIngredient, addIngredient}) =>
@@ -36,6 +37,9 @@ const RecipeModal = ({user, record, show, close, onChange, addTag, deleteTag, po
 						value={record.image}
 						onChange={onChange}
 					/>
+				</FormGroup>
+				<FormGroup>
+					<Canvas />
 				</FormGroup>
 				<FormGroup>
 					<ControlLabel>Ingredients</ControlLabel>
