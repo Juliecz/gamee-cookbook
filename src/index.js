@@ -11,6 +11,7 @@ import App from './containers/App/index';
 import Recipes from './containers/Recipes';
 import Recipe from './containers/Recipe';
 import SignUp from './containers/SignUp';
+import Test from './containers/Test';
 
 const history = syncHistoryWithStore(browserHistory, store);
 
@@ -21,6 +22,7 @@ ReactDOM.render(
 				<IndexRoute component={Recipes}/>
 				<Route path="/detail/:id" component={Recipe}/>
 				<Route path="signup" components={SignUp}/>
+				<Route path="/test" components={Test}/>
 			</Route>
 		</Router>
 	</Provider>,
